@@ -2,9 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { BiTrash, BiCheck, BiUndo } from 'react-icons/bi';
 function getData() {
-	let data = localStorage.getItem('notes');
-	data = JSON.parse(data);
-	return data;
+	try {
+		let data = localStorage.getItem('notes');
+		data = JSON.parse(data);
+		console.log(data);
+		return data;
+	} catch (err) {
+		console.log(err.message);
+	}
 }
 
 function Notes() {
@@ -28,7 +33,9 @@ function Notes() {
 						note: noteRef.current.value,
 						completed: false,
 					};
-					setNotes([...notes, note]);
+					let newNotes = Array.from(notes);
+					newNotes.push(note);
+					setNotes(newNotes);
 					noteRef.current.value = '';
 					localStorage.setItem('notes', JSON.stringify([...notes, note]));
 				}}>
