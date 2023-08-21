@@ -47,6 +47,8 @@ function Notes() {
 				<textarea
 					placeholder='Add a note...'
 					type='text'
+					rows={3}
+					cols={10}
 					className='border border-slate-400 accent-emerald-400/30 px-4 py-4 pb-12 w-3/4 sm:w-2/3 rounded-md bg-inherit shadow-sm dark:shadow-white/60'
 					ref={noteRef}
 				/>
@@ -75,15 +77,18 @@ function NoteList({ notes, setNotes }) {
 					return (
 						<div
 							key={note.id}
-							className='flex dark:bg-slate-100/10 flex-row gap-4 items-center w-full md:w-3/4 max-h-20  max-w-md px-4 py-2 dark:border backdrop:blur-sm justify-between rounded shadow-sm hover:shadow-md border-slate-400/40 hover:cursor-pointer  text-md      bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100'>
-							<p
-								className={`text-center capitalize ${
-									note.completed
-										? 'line-through dark:text-red-300 text-red-800/90'
-										: 'text-emerald-800 dark:text-emerald-400'
-								}`}>
-								{note.note}
-							</p>
+							// overflow-wrap: break-word
+							className='flex whitespace-break-spaces dark:bg-slate-100/10 flex-row gap-4 items-center w-full md:w-3/4  max-w-md px-4 py-2 dark:border backdrop:blur-sm justify-between rounded shadow-sm hover:shadow-md border-slate-400/40 hover:cursor-pointer  text-md      bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100'>
+							<div className='overflow-x-scroll'>
+								<p
+									className={`text-center capitalize ${
+										note.completed
+											? 'line-through dark:text-red-300 text-red-800/90'
+											: 'text-emerald-800 dark:text-emerald-400'
+									}`}>
+									{note.note}
+								</p>
+							</div>
 							<div className='flex text-xl gap-4'>
 								{note.completed ? (
 									<BiUndo
