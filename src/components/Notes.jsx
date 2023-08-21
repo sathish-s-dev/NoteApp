@@ -44,10 +44,10 @@ function Notes() {
 						localStorage.setItem('notes', JSON.stringify([...notes, note]));
 					}
 				}}>
-				<input
+				<textarea
 					placeholder='Add a note...'
 					type='text'
-					className='border border-slate-400 accent-emerald-400/30 px-4 py-4 pb-12 h- w-3/4 sm:w-2/3 rounded-md bg-inherit shadow-sm dark:shadow-white/60'
+					className='border border-slate-400 accent-emerald-400/30 px-4 py-4 pb-12 w-3/4 sm:w-2/3 rounded-md bg-inherit shadow-sm dark:shadow-white/60'
 					ref={noteRef}
 				/>
 				<input
@@ -75,7 +75,7 @@ function NoteList({ notes, setNotes }) {
 					return (
 						<div
 							key={note.id}
-							className='flex dark:bg-slate-100/10 flex-row gap-4 items-center w-full md:w-3/4  max-w-md px-4 py-2 dark:border backdrop:blur-sm justify-between rounded shadow-sm hover:shadow-md border-slate-400/40 hover:cursor-pointer  text-md      bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100'>
+							className='flex dark:bg-slate-100/10 flex-row gap-4 items-center w-full md:w-3/4 max-h-20  max-w-md px-4 py-2 dark:border backdrop:blur-sm justify-between rounded shadow-sm hover:shadow-md border-slate-400/40 hover:cursor-pointer  text-md      bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100'>
 							<p
 								className={`text-center capitalize ${
 									note.completed
