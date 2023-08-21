@@ -17,7 +17,7 @@ function Notes() {
 
 	useEffect(() => {
 		let data = getData();
-		setNotes(data);
+		if (data) setNotes(data);
 	}, []);
 
 	const noteRef = React.useRef();
