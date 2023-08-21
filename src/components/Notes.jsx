@@ -17,7 +17,9 @@ function Notes() {
 
 	useEffect(() => {
 		let data = getData();
-		if (data != null || data != []) setNotes(data);
+		if (data !== null) {
+			setNotes(data);
+		}
 	}, []);
 
 	console.log(notes, 'notes data');
